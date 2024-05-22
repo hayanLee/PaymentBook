@@ -8,6 +8,7 @@ const StWrapper = styled.div`
     box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
 `;
 
 export default function Layout({ children }) {
