@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Calendar from '../../components/Calendar';
 import Form from '../../components/Form';
@@ -12,12 +13,21 @@ const StWrapContainer = styled.div`
     gap: 20px;
     padding: 20px;
 `;
-
+const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const initMonth = Number(localStorage.getItem('selectedMonth')) || 1;
 export default function HomePage() {
+    const [selectedMonth, setSelectedMonth] = useState(initMonth);
+    useEffect(() => {
+        localStorage.setItem('selectedMonth', selectedMonth);
+    }, [selectedMonth]);
     return (
         <StWrapContainer>
             <Form />
-            <Calendar />
+            <Calendar
+                months={MONTHS}
+                selectedMonth={selectedMonth}
+                onSelectMonth={setSelectedMonth}
+            />
             <PaymentsList />
         </StWrapContainer>
     );

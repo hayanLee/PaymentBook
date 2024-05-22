@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         --main-color: #8fd0ff; // 배경
         --light-color : #abe63d; // 입력폼
         --first-color : #e1efce; //나머지 배경
-        --second-color : #fff; // 카드
+        --second-color : #feffdc; // 카드
         --point-color : #fe1280; // 버튼, 호버
         --text : #0b0255;
         --point-text: #ff5500;
