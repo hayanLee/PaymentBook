@@ -9,6 +9,7 @@ const StDiv = styled.div`
     grid-template-rows: repeat(2, auto);
     gap: 15px;
     padding: 0 10px;
+    margin: 10px 0;
 `;
 export default function Calendar({ months, selectedMonth, onSelectMonth }) {
     return (
