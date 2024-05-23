@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StCard = styled.div`
@@ -47,10 +48,14 @@ const StAmount = styled.span`
 `;
 
 export default function PaymentCard({ payment }) {
+    const navigate = useNavigate();
     const { id, date, category, amount, content } = payment;
+    const handleClick = () => {
+        navigate(`/payment/${id}`);
+    };
     return (
         <StCard>
-            <StSpanWrapper>
+            <StSpanWrapper onClick={handleClick}>
                 <span>{date}</span>
                 <span>{content}</span>
             </StSpanWrapper>

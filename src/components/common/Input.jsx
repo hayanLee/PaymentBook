@@ -27,6 +27,7 @@ export default function Input({ label, id, type, value, onChange }) {
             <StInput
                 id={id}
                 type={type}
+                value={value}
                 onChange={handleChange}
                 min={type === 'number' ? 0 : ''}
             />
