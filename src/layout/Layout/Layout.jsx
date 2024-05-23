@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StWrapper = styled.div`
@@ -11,6 +12,10 @@ const StWrapper = styled.div`
     overflow: hidden;
 `;
 
-export default function Layout({ children }) {
-    return <StWrapper>{children}</StWrapper>;
+export default function Layout() {
+    return (
+        <StWrapper>
+            <Outlet />
+        </StWrapper>
+    );
 }
