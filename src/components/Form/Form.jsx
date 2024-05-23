@@ -14,7 +14,7 @@ const StForm = styled.form`
     background-color: var(--light-color);
     border-radius: 10px;
 `;
-export default function Form() {
+export default function Form({ onSubmit }) {
     const [isFormValid, setIsFromValid] = useState(false);
     const [payment, setPayment] = useState({
         id: uuidv4(),
@@ -37,8 +37,7 @@ export default function Form() {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (isFormValid) console.log(payment);
-        // if (isFormValid) onSubmit(payment);
+        if (isFormValid) onSubmit(payment);
     };
     return (
         <StForm onSubmit={handleSubmit}>

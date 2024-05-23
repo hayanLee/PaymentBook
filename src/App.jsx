@@ -59,6 +59,10 @@ function App() {
                 '자율주행차량 운전주행모드 자동 전환용 인식률 90% 이상의 다중 센서 기반 운전자 상태 인식 및 상황 인식 원천 기술 개발',
         },
     ]);
+    const handleAddPaymentData = (newData) => {
+        setPaymentDatas([...paymentDatas, newData]);
+    };
+
     const handleChangePaymnetData = (changedData) => {
         setPaymentDatas((prev) =>
             prev.map((data) => (data.id === changedData.id ? changedData : data))
@@ -75,7 +79,12 @@ function App() {
                     <Routes>
                         <Route
                             path='/'
-                            element={<HomePage paymentDatas={paymentDatas} />}
+                            element={
+                                <HomePage
+                                    paymentDatas={paymentDatas}
+                                    onAddPaymentData={handleAddPaymentData}
+                                />
+                            }
                         />
                         <Route
                             path='/payment/:paymentId'

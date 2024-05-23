@@ -15,7 +15,7 @@ const StWrapContainer = styled.div`
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const initMonth = Number(localStorage.getItem('selectedMonth')) || 1;
 
-export default function HomePage({ paymentDatas }) {
+export default function HomePage({ paymentDatas, onAddPaymentData }) {
     const [selectedMonth, setSelectedMonth] = useState(initMonth);
     const filteredPaymentDatas = paymentDatas.filter((data) => {
         const filteredMonth = new Date(data.date).getMonth() + 1;
@@ -26,7 +26,7 @@ export default function HomePage({ paymentDatas }) {
     }, [selectedMonth]);
     return (
         <StWrapContainer>
-            <Form />
+            <Form onSubmit={onAddPaymentData} />
             <Calendar
                 months={MONTHS}
                 selectedMonth={selectedMonth}
