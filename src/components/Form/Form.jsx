@@ -16,13 +16,7 @@ const StForm = styled.form`
 `;
 export default function Form({ onSubmit }) {
     const [isFormValid, setIsFromValid] = useState(false);
-    const [payment, setPayment] = useState({
-        id: uuidv4(),
-        date: '',
-        category: '',
-        amount: 0,
-        content: '',
-    });
+    const [payment, setPayment] = useState(initForm);
     const handleChange = (id, value) => {
         setPayment((prev) => {
             const newCost = { ...prev, [id]: value };
@@ -37,7 +31,13 @@ export default function Form({ onSubmit }) {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (isFormValid) onSubmit(payment);
+        if (isFormValid) {
+            onSubmit(payment);
+            setPayment(initForm);
+            setIsFromValid(false);
+        } else {
+            alert('양식을 입력해주세요');
+        }
     };
     return (
         <StForm onSubmit={handleSubmit}>
@@ -73,3 +73,11 @@ export default function Form({ onSubmit }) {
         </StForm>
     );
 }
+
+const initForm = {
+    id: uuidv4(),
+    date: '',
+    category: '',
+    amount: 0,
+    content: '',
+};

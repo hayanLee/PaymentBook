@@ -59,9 +59,7 @@ export default function PaymentDetailPage({
         } else if (!modifiedPayment.category) {
             alert('분류를 입력하세요');
         } else if (!modifiedPayment.amount) {
-            typeof modifiedPayment.amount
-                ? alert('금액에 잘못된 양식을 입력하였습니다')
-                : alert('금액을 입력하세요');
+            alert('금액에 숫자를 입력해주세요');
         } else if (!modifiedPayment.content) {
             alert('내용을 입력하세요');
         } else {
