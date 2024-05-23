@@ -28,18 +28,17 @@ export default function PaymentDetailPage({
 
     const targetPayment = paymentDatas.find((data) => data.id === paymentId); // 대상
     // 변경된 payment 저장
-    const [modifiedPayment, setModifiedPayment] = useState(
-        targetPayment
-            ? {
-                  id: targetPayment.id,
-                  date: targetPayment.date,
-                  category: targetPayment.category,
-                  amount: targetPayment.amount,
-                  content: targetPayment.content,
-              }
-            : {}
-    );
+    const { id, date, category, amount, content } = targetPayment || {};
+    const [modifiedPayment, setModifiedPayment] = useState({
+        id,
+        date,
+        category,
+        amount,
+        content,
+    });
     const handleChange = (id, value) => {
+        // 이부분을 useRef
+        //ref를 값을 저장하는 용도로 사용
         setModifiedPayment((prev) => {
             const newModifiedPayment = { ...prev, [id]: value };
             const isValid =
@@ -55,11 +54,25 @@ export default function PaymentDetailPage({
         if (isFormValid) {
             onChangePaymentData, onChangePaymentData(modifiedPayment);
             navigate(-1);
-        } else console.log('빈칸 있음');
+        } else if (!modifiedPayment.date) {
+            alert('날짜를 입력하세요');
+        } else if (!modifiedPayment.category) {
+            alert('분류를 입력하세요');
+        } else if (!modifiedPayment.amount) {
+            typeof modifiedPayment.amount
+                ? alert('금액에 잘못된 양식을 입력하였습니다')
+                : alert('금액을 입력하세요');
+        } else if (!modifiedPayment.content) {
+            alert('내용을 입력하세요');
+        } else {
+            alert('다시 입력해주세요');
+        }
     };
     const handleDelete = () => {
-        onDeletePaymentData(targetPayment);
-        navigate(-1);
+        if (confirm('해당 지출 항목을 삭제하시겠습니까?')) {
+            onDeletePaymentData(targetPayment);
+            navigate(-1);
+        }
     };
     const handleBack = () => {
         navigate(-1);

@@ -10,7 +10,7 @@ const StButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        filter: brightness(120%);
+        filter: brightness(130%);
         transform: scale(1.1);
         transition: 0.2s;
     }
