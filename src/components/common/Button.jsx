@@ -15,6 +15,6 @@ const StButton = styled.button`
         transition: 0.2s;
     }
 `;
-export default function Button({ value }) {
-    return <StButton>{value}</StButton>;
+export default function Button({ value, onClick }) {
+    return <StButton onClick={onClick}>{value}</StButton>;
 }

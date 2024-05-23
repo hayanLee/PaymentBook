@@ -22,7 +22,7 @@ function App() {
             content: '모던 자바스크립트',
         },
         {
-            id: '24310f72-56b4-41a7-a9c2-458580ef1f8',
+            id: '1',
             date: '2024-02-02',
             category: '식비',
             amount: 50000,
@@ -59,6 +59,14 @@ function App() {
                 '자율주행차량 운전주행모드 자동 전환용 인식률 90% 이상의 다중 센서 기반 운전자 상태 인식 및 상황 인식 원천 기술 개발',
         },
     ]);
+    const handleChangePaymnetData = (changedData) => {
+        setPaymentDatas((prev) =>
+            prev.map((data) => (data.id === changedData.id ? changedData : data))
+        );
+    };
+    const handleDeletedPaymnetData = (deletedData) => {
+        setPaymentDatas((prev) => prev.filter((data) => data.id !== deletedData.id));
+    };
     return (
         <>
             <GlobalStyle />
@@ -74,7 +82,8 @@ function App() {
                             element={
                                 <PaymentDetailPage
                                     paymentDatas={paymentDatas}
-                                    onChangePaymentDatas={setPaymentDatas}
+                                    onChangePaymentData={handleChangePaymnetData}
+                                    onDeletePaymentData={handleDeletedPaymnetData}
                                 />
                             }
                         />
