@@ -1,6 +1,12 @@
-# PropsDrilling 🔥
+# Payment Book
 
-## component
+개인 지출 관리 애플리케이션
+
+### 진행 과정
+
+1. PropsDrilling 🔥
+2. ContextAPI
+3. Redux
 
 ```
 PaymentBook/
@@ -28,6 +34,23 @@ PaymentBook/
     │   │
     │   └── PaymentsList/
     │       └── PaymentsList.jsx
+    │
+    ├── context/
+    │   ├── MonthContext.jsx
+    │   └── PaymentContext.jsx
+    │
+    ├── layout/
+    │   └── Layout.jsx/
+    │
+    ├── redux/
+    │   ├── reducers/
+    │   │   └── month.reducer.js
+    │   │   └── payment.reducer.js
+    │   └── action.js
+    │   └── store.js
+    │
+    ├── routes/
+    │   └── router.jsx/
     │
     ├── pages/
     │   ├── Homepage/
