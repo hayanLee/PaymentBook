@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { addPaymentData } from '../../redux/action';
 import Button from '../common/Button';
 import Input from '../common/Input';
 
@@ -14,7 +16,9 @@ const StForm = styled.form`
     background-color: var(--light-color);
     border-radius: 10px;
 `;
-export default function Form({ onSubmit }) {
+export default function Form() {
+    const dispatch = useDispatch();
+    const onSubmit = (newData) => dispatch(addPaymentData(newData));
     const [isFormValid, setIsFromValid] = useState(false);
     const [payment, setPayment] = useState(initForm);
     const handleChange = (id, value) => {

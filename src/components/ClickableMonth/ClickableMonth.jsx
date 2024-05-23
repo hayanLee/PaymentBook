@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { MonthContext } from '../../context/MonthContext';
+import { setSelectedMonth } from '../../redux/action';
 
 const StButton = styled.button`
     width: 100%;
@@ -19,9 +19,14 @@ const StButton = styled.button`
 `;
 
 export default function ClickableMonth({ month }) {
-    const { selectedMonth, onSelectMonth } = useContext(MonthContext);
+    const dispatch = useDispatch();
+    const selectedMonth = useSelector((state) => state.month.selectedMonth);
     const isSelected = !!(month === selectedMonth);
-    const handleClick = () => onSelectMonth(month);
+
+    const handleClick = () => {
+        dispatch(setSelectedMonth(month));
+        localStorage.setItem('selectedMonth', month);
+    };
     return (
         <StButton onClick={handleClick} $isSelected={isSelected}>
             {month} 월

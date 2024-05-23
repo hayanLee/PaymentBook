@@ -1,9 +1,10 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
-import { PaymentContext } from '../../context/PaymentContext';
+import { changePaymentData, deletePaymentData } from '../../redux/action';
 
 const StWrapContainer = styled.div`
     display: flex;
@@ -17,10 +18,14 @@ const StButtons = styled.div`
     gap: 15px;
 `;
 export default function PaymentDetailPage() {
-    const { paymentDatas, onChangePaymentData, onDeletePaymentData } =
-        useContext(PaymentContext);
     const { paymentId } = useParams();
     const navigate = useNavigate(); // 뒤로가기
+    const dispatch = useDispatch();
+    const paymentDatas = useSelector((state) => state.payment.paymentDatas);
+
+    const onChangePaymentData = (changedData) => dispatch(changePaymentData(changedData));
+    const onDeletePaymentData = (deletedData) => dispatch(deletePaymentData(deletedData));
+
     const [isFormValid, setIsFromValid] = useState(true);
 
     const targetPayment = paymentDatas.find((data) => data.id === paymentId); // 대상
@@ -49,7 +54,7 @@ export default function PaymentDetailPage() {
     };
     const handleSave = () => {
         if (isFormValid) {
-            onChangePaymentData, onChangePaymentData(modifiedPayment);
+            onChangePaymentData(modifiedPayment);
             navigate(-1);
         } else if (!modifiedPayment.date) {
             alert('날짜를 입력하세요');
