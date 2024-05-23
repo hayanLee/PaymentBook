@@ -16,11 +16,11 @@ const StUlist = styled.ul`
 `;
 
 // id, date,category,amount,content
-export default function PaymentsList({ paymentDatas }) {
+export default function PaymentsList({ filteredPaymentDatas }) {
     return (
         <StListWrapper>
             <StUlist>
-                {paymentDatas.map((payment) => (
+                {filteredPaymentDatas.map((payment) => (
                     <PaymentCard key={payment.id} payment={payment} />
                 ))}
             </StUlist>

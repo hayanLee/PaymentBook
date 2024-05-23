@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { MonthContext } from '../../context/MonthContext';
 
 const StButton = styled.button`
     width: 100%;
@@ -16,8 +18,10 @@ const StButton = styled.button`
     }
 `;
 
-export default function ClickableMonth({ month, isSelected, onClick }) {
-    const handleClick = () => onClick(month);
+export default function ClickableMonth({ month }) {
+    const { selectedMonth, onSelectMonth } = useContext(MonthContext);
+    const isSelected = !!(month === selectedMonth);
+    const handleClick = () => onSelectMonth(month);
     return (
         <StButton onClick={handleClick} $isSelected={isSelected}>
             {month} 월

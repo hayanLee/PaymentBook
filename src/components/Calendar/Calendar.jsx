@@ -11,20 +11,12 @@ const StDiv = styled.div`
     padding: 0 10px;
     margin: 10px 0;
 `;
-export default function Calendar({ months, selectedMonth, onSelectMonth }) {
+export default function Calendar({ months }) {
     return (
         <StDiv>
             {months.map((month) => {
                 const id = uuidv4();
-                return (
-                    <ClickableMonth
-                        key={id}
-                        month={month}
-                        onClick={onSelectMonth}
-                        selectedMonth={selectedMonth}
-                        isSelected={!!(month === selectedMonth)}
-                    />
-                );
+                return <ClickableMonth key={id} month={month} />;
             })}
         </StDiv>
     );

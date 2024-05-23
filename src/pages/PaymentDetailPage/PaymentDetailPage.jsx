@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
+import { PaymentContext } from '../../context/PaymentContext';
 
 const StWrapContainer = styled.div`
     display: flex;
@@ -15,13 +16,9 @@ const StButtons = styled.div`
     display: flex;
     gap: 15px;
 `;
-// paymentDatas 배열 자체를 넘김
-// onChangePaymentData, onDeletePaymentData -> 저장 시 새로운 데이터로 갱신
-export default function PaymentDetailPage({
-    paymentDatas,
-    onChangePaymentData,
-    onDeletePaymentData,
-}) {
+export default function PaymentDetailPage() {
+    const { paymentDatas, onChangePaymentData, onDeletePaymentData } =
+        useContext(PaymentContext);
     const { paymentId } = useParams();
     const navigate = useNavigate(); // 뒤로가기
     const [isFormValid, setIsFromValid] = useState(true);
