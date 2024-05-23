@@ -8,9 +8,9 @@ const StListWrapper = styled.div`
     width: 100%;
     border-radius: 10px;
     background-color: var(--second-color);
+    overflow-y: auto;
 `;
 const StUlist = styled.ul`
-    height: 800px;
     overflow-x: hidden;
     overflow-y: auto;
 `;

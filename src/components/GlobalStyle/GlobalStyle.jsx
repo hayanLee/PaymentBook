@@ -25,7 +25,8 @@ const GlobalStyle = createGlobalStyle`
     }
     #root{
         width: 900px;
-        height: 1200px;
+        height: 80%;
+        min-height: 900px;
     }
 
 `;
