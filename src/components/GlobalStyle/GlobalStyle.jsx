@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
         --second-color : #feffdc; // 카드
         --point-color : #fe1280; // 버튼, 호버
         --text : #0b0255;
-        --point-text: #ff5500;
+        --point-text: #321098;
 
     }
     *{

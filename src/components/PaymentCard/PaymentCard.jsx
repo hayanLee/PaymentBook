@@ -44,7 +44,7 @@ const StAmount = styled.span`
     flex-shrink: 0;
     align-self: center;
     font-weight: bold;
-    color: var(--point-text);
+    color: var(--point-color);
 `;
 
 export default function PaymentCard({ payment }) {
