@@ -78,10 +78,10 @@ export default function Form() {
     );
 }
 
-const initForm = {
+const initForm = () => ({
     id: uuidv4(),
     date: '',
     category: '',
     amount: 0,
     content: '',
-};
+});
