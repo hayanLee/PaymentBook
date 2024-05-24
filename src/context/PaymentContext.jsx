@@ -3,7 +3,7 @@ import { createContext, useState } from 'react';
 export const PaymentContext = createContext();
 
 export const PaymentProvider = ({ children }) => {
-    const [paymentDatas, setPaymentDatas] = useState([
+    const [payments, setPayments] = useState([
         {
             id: '25600f72-56b4-41a7-a9c2-47358580e2f8',
             date: '2024-01-05',
@@ -107,21 +107,21 @@ export const PaymentProvider = ({ children }) => {
         },
     ]);
     const handleAddPaymentData = (newData) => {
-        setPaymentDatas([...paymentDatas, newData]);
+        setPayments([...payments, newData]);
     };
 
     const handleChangePaymentData = (changedData) => {
-        setPaymentDatas((prev) =>
+        setPayments((prev) =>
             prev.map((data) => (data.id === changedData.id ? changedData : data))
         );
     };
     const handleDeletedPaymenttData = (deletedData) => {
-        setPaymentDatas((prev) => prev.filter((data) => data.id !== deletedData.id));
+        setPayments((prev) => prev.filter((data) => data.id !== deletedData.id));
     };
     return (
         <PaymentContext.Provider
             value={{
-                paymentDatas,
+                payments,
                 onAddPaymentData: handleAddPaymentData,
                 onChangePaymentData: handleChangePaymentData,
                 onDeletePaymentData: handleDeletedPaymenttData,

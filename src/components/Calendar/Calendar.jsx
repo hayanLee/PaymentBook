@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
 import ClickableMonth from '../ClickableMonth';
 
 const StDiv = styled.div`
@@ -11,13 +10,15 @@ const StDiv = styled.div`
     padding: 0 10px;
     margin: 10px 0;
 `;
-export default function Calendar({ months }) {
+const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+export default function Calendar() {
     return (
         <StDiv>
-            {months.map((month) => {
-                const id = uuidv4();
-                return <ClickableMonth key={id} month={month} />;
+            {MONTHS.map((month) => {
+                return <ClickableMonth key={month} month={month} />;
             })}
         </StDiv>
     );
 }
+
+// Array(12).fill(0).map((_,i)=>i+1)

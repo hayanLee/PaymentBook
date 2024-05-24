@@ -21,14 +21,14 @@ export default function PaymentDetailPage() {
     const { paymentId } = useParams();
     const navigate = useNavigate(); // 뒤로가기
     const dispatch = useDispatch();
-    const paymentDatas = useSelector((state) => state.payment.paymentDatas);
+    const payments = useSelector((state) => state.payment.payments);
 
     const onChangePaymentData = (changedData) => dispatch(changePaymentData(changedData));
     const onDeletePaymentData = (deletedData) => dispatch(deletePaymentData(deletedData));
 
     const [isFormValid, setIsFromValid] = useState(true);
 
-    const targetPayment = paymentDatas.find((data) => data.id === paymentId); // 대상
+    const targetPayment = payments.find((data) => data.id === paymentId); // 대상
     // 변경된 payment 저장
     const { id, date, category, amount, content } = targetPayment || {};
     const [modifiedPayment, setModifiedPayment] = useState({

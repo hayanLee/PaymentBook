@@ -21,7 +21,7 @@ const StButton = styled.button`
 export default function ClickableMonth({ month }) {
     const dispatch = useDispatch();
     const selectedMonth = useSelector((state) => state.month.selectedMonth);
-    const isSelected = !!(month === selectedMonth);
+    const isSelected = month === selectedMonth;
 
     const handleClick = () => {
         dispatch(setSelectedMonth(month));

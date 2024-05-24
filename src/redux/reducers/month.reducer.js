@@ -10,6 +10,7 @@ function monthReducer(prevState = initState, action) {
             // localStorage.setItem('selectedMonth', selectedMonth); -> dispatch 후 실행
             return { selectedMonth: action.payload }; // action creator에 의해 action 객체 반환하므로
         default:
+            console.log('monthReducer Default');
             return prevState;
     }
 }

@@ -20,7 +20,7 @@ export default function Form() {
     const dispatch = useDispatch();
     const onSubmit = (newData) => dispatch(addPaymentData(newData));
     const [isFormValid, setIsFromValid] = useState(false);
-    const [payment, setPayment] = useState(initForm);
+    const [payment, setPayment] = useState(initialData);
     const handleChange = (id, value) => {
         setPayment((prev) => {
             const newCost = { ...prev, [id]: value };
@@ -37,7 +37,7 @@ export default function Form() {
         e.preventDefault();
         if (isFormValid) {
             onSubmit(payment);
-            setPayment(initForm);
+            setPayment(initialData);
             setIsFromValid(false);
         } else {
             alert('양식을 입력해주세요');
@@ -78,7 +78,7 @@ export default function Form() {
     );
 }
 
-const initForm = () => ({
+const initialData = () => ({
     id: uuidv4(),
     date: '',
     category: '',

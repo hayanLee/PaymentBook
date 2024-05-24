@@ -1,7 +1,7 @@
 // action = 작업 명세서
-
 export const SET_SELECTED_MONTH = 'SET_SELECTED_MONTH'; //작업 이름
 //action Creator
+//action 객체를 반환하는 함수
 export const setSelectedMonth = (month) => ({
     type: SET_SELECTED_MONTH,
     payload: month,

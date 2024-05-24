@@ -1,7 +1,7 @@
 import { ADD_PAYMENT_DATA, CHANGE_PAYMENT_DATA, DELETE_PAYMENT_DATA } from '../action';
 
-const initState = {
-    paymentDatas: [
+const initialState = {
+    payments: [
         {
             id: '25600f72-56b4-41a7-a9c2-47358580e2f8',
             date: '2024-01-05',
@@ -97,25 +97,26 @@ const initState = {
         },
     ],
 };
-function PaymentReducer(prevState = initState, action) {
+function paymentReducer(prevState = initialState, action) {
     switch (action.type) {
         case ADD_PAYMENT_DATA:
-            return { paymentDatas: [...prevState.paymentDatas, action.payload] };
+            return { payments: [...prevState.payments, action.payload] };
         case CHANGE_PAYMENT_DATA:
             console.log(action.payload);
             return {
-                paymentDatas: prevState.paymentDatas.map((data) =>
+                payments: prevState.payments.map((data) =>
                     data.id === action.payload.id ? action.payload : data
                 ),
             };
         case DELETE_PAYMENT_DATA:
             return {
-                paymentDatas: prevState.paymentDatas.filter(
+                payments: prevState.payments.filter(
                     (data) => data.id !== action.payload.id
                 ),
             };
         default:
+            console.log('paymentReducer Default');
             return prevState;
     }
 }
-export default PaymentReducer;
+export default paymentReducer;
